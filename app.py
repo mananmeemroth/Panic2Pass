@@ -13,7 +13,7 @@ from pypdf import PdfReader
 from openai import OpenAI
 
 from backend.config import (
-    HOST, DEFAULT_PORT, OLLAMA_BASE_URL, OLLAMA_MODEL, KEEP_ALIVE, MAX_PDF_PAGES, MAX_CONTEXT_CHARS
+    HOST, DEFAULT_PORT, LLM_BASE_URL, LLM_API_KEY, MODEL_NAME, KEEP_ALIVE, MAX_PDF_PAGES, MAX_CONTEXT_CHARS
 )
 from backend.model_cache import preload_model_into_cache, get_cache_status
 from backend.prompts import SYSTEM_PROMPT, generate_prompt
@@ -23,7 +23,7 @@ from contextlib import asynccontextmanager
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Preloads the model weights into RAM/VRAM cache on server boot."""
-    print(f"🔥 Warming up Ollama model ({OLLAMA_MODEL}) into cache...")
+    print(f"🔥 Warming up AI model ({MODEL_NAME}) into cache...")
     threading.Thread(target=preload_model_into_cache, daemon=True).start()
     yield
 
@@ -34,8 +34,8 @@ app = FastAPI(title="Panic2Pass API", description="Emergency Pre-Exam AI Rescue 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-# Initialize OpenAI-compatible Ollama client
-client = OpenAI(base_url=OLLAMA_BASE_URL, api_key="ollama")
+# Initialize OpenAI-compatible client
+client = OpenAI(base_url=LLM_BASE_URL, api_key=LLM_API_KEY)
 
 
 class RescueRequest(BaseModel):
