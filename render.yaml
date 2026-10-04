@@ -7,9 +7,7 @@ services:
     envVars:
       - key: PORT
         value: 10000
-      - key: GROQ_API_KEY
-        sync: false
-      - key: OPENAI_API_KEY
-        sync: false
       - key: OLLAMA_BASE_URL
         value: http://localhost:11434/v1
+      - key: OLLAMA_MODEL
+        value: llama3.2:3b

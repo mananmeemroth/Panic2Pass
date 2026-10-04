@@ -3,12 +3,11 @@ import urllib.request
 import urllib.error
 import threading
 from typing import Tuple, Dict, Any
-from backend.config import PROVIDER, MODEL_NAME, OLLAMA_API_BASE, KEEP_ALIVE
+from backend.config import OLLAMA_API_BASE, OLLAMA_MODEL, KEEP_ALIVE
 
 _CACHE_STATUS = {
     "is_cached": False,
-    "provider": PROVIDER,
-    "model": MODEL_NAME,
+    "model": OLLAMA_MODEL,
     "message": "Initializing...",
     "error": None
 }
@@ -17,37 +16,26 @@ _lock = threading.Lock()
 
 def check_ollama_health() -> Tuple[bool, str]:
     """Checks if Ollama server is reachable."""
-    if PROVIDER != "ollama":
-        return True, f"{PROVIDER.upper()} cloud inference ready."
-
     try:
         req = urllib.request.Request(f"{OLLAMA_API_BASE}/api/tags", method="GET")
         with urllib.request.urlopen(req, timeout=3) as resp:
             if resp.status == 200:
                 data = json.loads(resp.read().decode("utf-8"))
                 models = [m.get("name", "") for m in data.get("models", [])]
-                model_base = MODEL_NAME.split(":")[0]
-                matched = any(MODEL_NAME in m or model_base in m for m in models)
+                model_base = OLLAMA_MODEL.split(":")[0]
+                matched = any(OLLAMA_MODEL in m or model_base in m for m in models)
                 if matched:
-                    return True, f"Ollama is running with model '{MODEL_NAME}'."
+                    return True, f"Ollama is running with model '{OLLAMA_MODEL}'."
                 else:
-                    return False, f"Ollama running, but model '{MODEL_NAME}' not found."
-            return False, f"Ollama HTTP status {resp.status}."
+                    return False, f"Ollama is running, but model '{OLLAMA_MODEL}' is missing. Run `ollama pull {OLLAMA_MODEL}`."
+            return False, f"Ollama returned HTTP status {resp.status}."
     except Exception as e:
-        return False, f"Cannot connect to local Ollama: {str(e)}"
+        return False, f"Cannot connect to Ollama at {OLLAMA_API_BASE}: {str(e)}"
 
 
 def preload_model_into_cache() -> Dict[str, Any]:
-    """Warms up model cache in memory."""
+    """Warms up Ollama model cache in memory."""
     global _CACHE_STATUS
-    if PROVIDER != "ollama":
-        with _lock:
-            _CACHE_STATUS["is_cached"] = True
-            _CACHE_STATUS["provider"] = PROVIDER
-            _CACHE_STATUS["model"] = MODEL_NAME
-            _CACHE_STATUS["message"] = f"🟢 Cloud Active: {PROVIDER.upper()} ({MODEL_NAME})"
-        return _CACHE_STATUS
-
     is_healthy, health_msg = check_ollama_health()
     if not is_healthy:
         with _lock:
@@ -58,7 +46,7 @@ def preload_model_into_cache() -> Dict[str, Any]:
 
     try:
         payload = json.dumps({
-            "model": MODEL_NAME,
+            "model": OLLAMA_MODEL,
             "prompt": "",
             "keep_alive": KEEP_ALIVE
         }).encode("utf-8")
@@ -74,13 +62,13 @@ def preload_model_into_cache() -> Dict[str, Any]:
                 with _lock:
                     _CACHE_STATUS["is_cached"] = True
                     _CACHE_STATUS["error"] = None
-                    _CACHE_STATUS["message"] = f"🟢 Cached & Ready: Ollama ({MODEL_NAME})"
+                    _CACHE_STATUS["message"] = f"🟢 Cached & Ready: Ollama ({OLLAMA_MODEL})"
                 return _CACHE_STATUS
     except Exception as e:
         with _lock:
             _CACHE_STATUS["is_cached"] = False
             _CACHE_STATUS["error"] = str(e)
-            _CACHE_STATUS["message"] = f"⚠️ {str(e)}"
+            _CACHE_STATUS["message"] = f"⚠️ Warm-up failed: {str(e)}"
 
     return _CACHE_STATUS
 

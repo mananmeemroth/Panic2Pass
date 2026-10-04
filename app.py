@@ -11,21 +11,22 @@ from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 from pypdf import PdfReader
 from openai import OpenAI
+from contextlib import asynccontextmanager
 
 from backend.config import (
-    HOST, DEFAULT_PORT, LLM_BASE_URL, LLM_API_KEY, MODEL_NAME, KEEP_ALIVE, MAX_PDF_PAGES, MAX_CONTEXT_CHARS
+    HOST, DEFAULT_PORT, OLLAMA_BASE_URL, OLLAMA_MODEL, KEEP_ALIVE, MAX_PDF_PAGES, MAX_CONTEXT_CHARS
 )
 from backend.model_cache import preload_model_into_cache, get_cache_status
 from backend.prompts import SYSTEM_PROMPT, generate_prompt
 
-from contextlib import asynccontextmanager
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Preloads the model weights into RAM/VRAM cache on server boot."""
-    print(f"🔥 Warming up AI model ({MODEL_NAME}) into cache...")
+    print(f"🔥 Warming up Ollama model ({OLLAMA_MODEL}) into cache...")
     threading.Thread(target=preload_model_into_cache, daemon=True).start()
     yield
+
 
 # Initialize FastAPI App with Lifespan
 app = FastAPI(title="Panic2Pass API", description="Emergency Pre-Exam AI Rescue Engine", lifespan=lifespan)
@@ -34,8 +35,8 @@ app = FastAPI(title="Panic2Pass API", description="Emergency Pre-Exam AI Rescue 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-# Initialize OpenAI-compatible client
-client = OpenAI(base_url=LLM_BASE_URL, api_key=LLM_API_KEY)
+# Initialize OpenAI-compatible Ollama client
+client = OpenAI(base_url=OLLAMA_BASE_URL, api_key="ollama")
 
 
 class RescueRequest(BaseModel):
@@ -64,7 +65,7 @@ async def parse_pdf(file: UploadFile = File(...)):
         contents = await file.read()
         reader = PdfReader(io.BytesIO(contents))
         pages_to_read = min(len(reader.pages), MAX_PDF_PAGES)
-        
+
         extracted_text = ""
         for i in range(pages_to_read):
             page_text = reader.pages[i].extract_text()
@@ -87,7 +88,7 @@ async def parse_pdf(file: UploadFile = File(...)):
 
 @app.post("/api/stream-rescue")
 async def stream_rescue(payload: RescueRequest):
-    """Streams the emergency rescue plan from the cached Ollama model."""
+    """Streams the emergency rescue plan directly from Ollama."""
     if not payload.context.strip():
         raise HTTPException(status_code=400, detail="Study material context is empty.")
 
