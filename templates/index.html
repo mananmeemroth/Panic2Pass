@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panic2Pass | The Best Way to Pass Your Exam (100% Offline AI)</title>
+    <meta name="description" content="Turn massive lecture slides and overwhelming notes into high-yield 30-minute triage plans in seconds with local Ollama AI.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Marked & Highlight.js for Markdown Output -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+    <!-- Outer Page Container with soft background aura -->
+    <div class="page-wrapper">
+        <div class="background-glow left-glow"></div>
+        <div class="background-glow right-glow"></div>
+
+        <!-- Navigation Bar -->
+        <header class="navbar-wrapper">
+            <nav class="navbar">
+                <a href="#" class="nav-brand">
+                    <span class="brand-text">Panic<span class="brand-accent">2</span>Pass</span>
+                    <span class="brand-badge">OLLAMA</span>
+                </a>
+                <div class="nav-links">
+                    <a href="#hero" class="nav-link active">Home</a>
+                    <a href="#modes" class="nav-link">Panic Modes</a>
+                    <a href="#studio" class="nav-link">Live Studio</a>
+                    <a href="#why-offline" class="nav-link">Why Offline</a>
+                </div>
+                <div class="nav-actions">
+                    <div class="cache-status-pill" id="cacheStatusPill">
+                        <span class="status-dot"></span>
+                        <span id="cacheStatusText">Warming up Ollama...</span>
+                    </div>
+                    <a href="#studio" class="btn btn-primary btn-sm">Start Cramming</a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Main Hero Section (Matching Reference Design) -->
+        <main>
+            <section class="hero-section" id="hero">
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <div class="eyebrow-tag">
+                            <span class="dash">—</span> 100% PRIVATE & OFFLINE PRE-EXAM RESCUE
+                        </div>
+                        <h1 class="hero-headline">
+                            The best way to <br><span class="gradient-text">pass your exam.</span>
+                        </h1>
+                        <p class="hero-subheadline">
+                            Turn hundreds of lecture slides and confusing syllabi into high-yield 30-minute triage plans in seconds with local, private AI.
+                        </p>
+                        <div class="hero-cta-group">
+                            <a href="#studio" class="btn btn-primary btn-lg">
+                                <span>Try for free</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                            <a href="#modes" class="btn btn-secondary btn-lg">See how it works</a>
+                        </div>
+                        <div class="hero-micro-metrics">
+                            <div class="metric-item">
+                                <strong>0.0s</strong> Cloud Latency
+                            </div>
+                            <div class="metric-dot">•</div>
+                            <div class="metric-item">
+                                <strong>100%</strong> Offline & Private
+                            </div>
+                            <div class="metric-dot">•</div>
+                            <div class="metric-item">
+                                <strong>3.2B</strong> Parameter Llama
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Hero 3D Graphic -->
+                    <div class="hero-visual">
+                        <div class="visual-card-wrapper">
+                            <img src="/static/images/hero_3d.jpg" alt="Panic2Pass 3D Interface Render" class="hero-3d-image">
+                            <!-- Floating interactive badge overlay -->
+                            <div class="floating-pill floating-pill-top">
+                                <span class="pulse-green"></span>
+                                <span>⚡ 30-Min Exam Triage Ready</span>
+                            </div>
+                            <div class="floating-pill floating-pill-bottom">
+                                <span>🧠 llama3.2:3b active in VRAM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Social Proof Logos Section -->
+            <section class="social-proof-section">
+                <p class="social-proof-label">Trusted by students cramming under pressure at top universities</p>
+                <div class="logos-row">
+                    <div class="uni-logo"><span>Stanford</span></div>
+                    <div class="uni-logo"><span>MIT</span></div>
+                    <div class="uni-logo"><span>Berkeley</span></div>
+                    <div class="uni-logo"><span>Oxford</span></div>
+                    <div class="uni-logo"><span>Harvard</span></div>
+                    <div class="uni-logo"><span>Cambridge</span></div>
+                </div>
+            </section>
+
+            <!-- Emergency Panic Modes Section -->
+            <section class="modes-section" id="modes">
+                <div class="section-header">
+                    <span class="section-badge">CRISIS TRIAGE</span>
+                    <h2 class="section-title">Designed for the night before.</h2>
+                    <p class="section-subtitle">Choose the exact rescue mode tailored to how much time and panic you have left.</p>
+                </div>
+
+                <div class="modes-grid">
+                    <div class="mode-card" data-mode="⚡ 30-Min Crash Plan">
+                        <div class="mode-icon-box bg-red">⚡</div>
+                        <div class="mode-time-badge">30 Mins Left</div>
+                        <h3 class="mode-title">30-Min Crash Plan</h3>
+                        <p class="mode-desc">Triage breakdown: 10 mins for core formulas, 15 mins for problem mechanisms, 5 mins for hall-door memory checklist.</p>
+                        <button class="mode-action-btn" onclick="selectModeAndScroll('⚡ 30-Min Crash Plan')">Select Mode &rarr;</button>
+                    </div>
+
+                    <div class="mode-card" data-mode="🆘 I'm Lost (Explain Simply)">
+                        <div class="mode-icon-box bg-blue">🆘</div>
+                        <div class="mode-time-badge">Conceptual Block</div>
+                        <h3 class="mode-title">"I'm Lost" (ELI5 Clarifier)</h3>
+                        <p class="mode-desc">Eliminates textbook jargon. Uses sticky real-world analogies, 3-step mechanics, and highlights the #1 student misconception.</p>
+                        <button class="mode-action-btn" onclick="selectModeAndScroll('🆘 I\'m Lost (Explain Simply)')">Select Mode &rarr;</button>
+                    </div>
+
+                    <div class="mode-card" data-mode="📝 Quiz Me (High Yield)">
+                        <div class="mode-icon-box bg-amber">📝</div>
+                        <div class="mode-time-badge">Active Recall</div>
+                        <h3 class="mode-title">High-Yield Exam Simulator</h3>
+                        <p class="mode-desc">Generates 3 top-probability exam questions with exact mark breakdowns, hints, and examiner-approved model answers.</p>
+                        <button class="mode-action-btn" onclick="selectModeAndScroll('📝 Quiz Me (High Yield)')">Select Mode &rarr;</button>
+                    </div>
+
+                    <div class="mode-card" data-mode="📋 Rapid Formula & Cheat Sheet">
+                        <div class="mode-icon-box bg-purple">📋</div>
+                        <div class="mode-time-badge">Rapid Glance</div>
+                        <h3 class="mode-title">Rapid Cheat Sheet</h3>
+                        <p class="mode-desc">Condensed matrix tables: Term | Meaning | Formula, algorithm steps, and common exam traps to avoid.</p>
+                        <button class="mode-action-btn" onclick="selectModeAndScroll('📋 Rapid Formula & Cheat Sheet')">Select Mode &rarr;</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Live Emergency Studio (Interactive App) -->
+            <section class="studio-section" id="studio">
+                <div class="studio-container">
+                    <div class="studio-header">
+                        <div>
+                            <span class="studio-live-tag">LIVE STUDIO</span>
+                            <h2 class="studio-title">Instant AI Exam Rescue</h2>
+                            <p class="studio-subtitle">Upload your syllabus PDF or paste lecture slides to start generation.</p>
+                        </div>
+                        <div class="studio-quick-stats">
+                            <span id="studioWordCount">0 chars loaded</span>
+                        </div>
+                    </div>
+
+                    <div class="studio-grid">
+                        <!-- Left Workspace Input Panel -->
+                        <div class="studio-panel input-panel">
+                            <!-- Document Input Tabs -->
+                            <div class="input-tabs">
+                                <button class="tab-btn active" id="tabPdfBtn" onclick="switchInputTab('pdf')">📄 Upload PDF</button>
+                                <button class="tab-btn" id="tabTextBtn" onclick="switchInputTab('text')">✍️ Paste Notes</button>
+                            </div>
+
+                            <!-- PDF Upload Area -->
+                            <div class="tab-content" id="tabPdfContent">
+                                <div class="dropzone" id="pdfDropzone">
+                                    <input type="file" id="pdfFileInput" accept=".pdf" style="display:none;">
+                                    <div class="dropzone-inner" onclick="document.getElementById('pdfFileInput').click()">
+                                        <div class="upload-icon">
+                                            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+                                        </div>
+                                        <h4 id="uploadHeadline">Drag & Drop Syllabus / Slides PDF</h4>
+                                        <p id="uploadSubheadline">Supports PDF up to 15 pages (100% extracted locally in your browser)</p>
+                                        <button type="button" class="btn btn-secondary btn-sm" style="pointer-events: none;">Browse Files</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Text Paste Area -->
+                            <div class="tab-content hidden" id="tabTextContent">
+                                <textarea id="notesTextInput" class="form-textarea" placeholder="Paste your syllabus, textbook sections, or lecture notes here...&#10;e.g. Operating Systems: Deadlocks, Banker's Algorithm, Safe State, Resource Allocation Graph, Paging, TLB..."></textarea>
+                            </div>
+
+                            <!-- Focus Topic Input -->
+                            <div class="form-group">
+                                <label for="weakTopicInput" class="form-label">
+                                    <span>🎯 Topic / Question you're most worried about:</span>
+                                    <span class="label-hint">(Optional)</span>
+                                </label>
+                                <input type="text" id="weakTopicInput" class="form-input" placeholder="e.g. Banker's Algorithm safety state check & need matrix">
+                                <div class="quick-chips">
+                                    <span class="chip" onclick="setTopic('Deadlocks & Banker\'s Algorithm')">Deadlocks</span>
+                                    <span class="chip" onclick="setTopic('Virtual Memory & Page Faults')">Virtual Memory</span>
+                                    <span class="chip" onclick="setTopic('Dynamic Programming & Memoization')">Dynamic Programming</span>
+                                    <span class="chip" onclick="setTopic('Core Formulas & Proofs')">Core Formulas</span>
+                                </div>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="actions-group">
+                                <label class="form-label">🚨 Trigger Rescue Plan:</label>
+                                <button class="btn btn-panic btn-primary-panic" id="btnCrash" onclick="triggerPanic('⚡ 30-Min Crash Plan')">
+                                    <span>⚡ 30-Min Emergency Crash Plan</span>
+                                </button>
+                                <div class="panic-btn-row">
+                                    <button class="btn btn-panic btn-blue-panic" id="btnLost" onclick="triggerPanic('🆘 I\'m Lost (Explain Simply)')">
+                                        <span>🆘 Explain Simply (ELI5)</span>
+                                    </button>
+                                    <button class="btn btn-panic btn-amber-panic" id="btnQuiz" onclick="triggerPanic('📝 Quiz Me (High Yield)')">
+                                        <span>📝 Quiz Me (High Yield)</span>
+                                    </button>
+                                </div>
+                                <button class="btn btn-panic btn-purple-panic" id="btnCheat" onclick="triggerPanic('📋 Rapid Formula & Cheat Sheet')">
+                                    <span>📋 Rapid Cheat Sheet Matrix</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Right Output Card -->
+                        <div class="studio-panel output-panel">
+                            <div class="output-topbar">
+                                <div class="output-status-indicator">
+                                    <span class="status-indicator-dot" id="outputDot"></span>
+                                    <span id="outputStatusLabel">Ready to generate</span>
+                                </div>
+                                <div class="output-actions">
+                                    <button class="btn-icon" id="copyBtn" onclick="copyOutput()" title="Copy to clipboard">
+                                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                        <span>Copy</span>
+                                    </button>
+                                    <button class="btn-icon" id="downloadBtn" onclick="downloadOutput()" title="Download as Markdown file">
+                                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                        <span>Download .md</span>
+                                    </button>
+                                    <button class="btn-icon" onclick="clearOutput()" title="Clear screen">
+                                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                                        <span>Clear</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Live Rendered Markdown Container -->
+                            <div class="output-body markdown-body" id="outputDisplay">
+                                <div class="empty-state">
+                                    <div class="empty-icon">⚡</div>
+                                    <h3>Your rescue plan will stream live here.</h3>
+                                    <p>Select your PDF notes on the left and choose a panic action to generate your exam prep strategy instantly.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why Offline Feature Section -->
+            <section class="why-section" id="why-offline">
+                <div class="section-header">
+                    <span class="section-badge">PRIVACY FIRST</span>
+                    <h2 class="section-title">Why 100% Offline AI?</h2>
+                    <p class="section-subtitle">Never worry about privacy, internet drops in basement exam halls, or costly token limits.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">🔒</div>
+                        <h4>100% Zero-Data Leakage</h4>
+                        <p>Your notes and exam questions never leave your device. All inference runs strictly on your local Ollama runtime.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">⚡</div>
+                        <h4>Zero API Costs & Rate Limits</h4>
+                        <p>No subscriptions, no rate limit timeouts, and no surprise bills. Unlimited study triage all semester long.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📶</div>
+                        <h4>Works in Offline Library Basements</h4>
+                        <p>Lost Wi-Fi right before exam time? Panic2Pass runs completely offline without needing an active internet connection.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-left">
+                    <div class="footer-brand">Panic<span>2</span>Pass</div>
+                    <p class="footer-text">Built for students cramming under pressure. Powered by Ollama & Llama 3.2.</p>
+                </div>
+                <div class="footer-right">
+                    <span class="footer-tag">100% Free & Open Source</span>
+                    <span class="footer-tag">MIT License</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Main JavaScript Logic -->
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

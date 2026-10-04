@@ -1,0 +1,21 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment variables
+.env
+.env.local
+
+# Gradio cache & temporary files
+.gradio/
+flagged/
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# OS specific
+.DS_Store
+Thumbs.db
